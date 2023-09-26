@@ -41,12 +41,9 @@ function App() {
     });
   };
 
-
-
   return (
     <>
       <NewExpense onAddExpense={addExpenseHandler}/>
-
       <Expenses expenses={expenses}/>    
     </>
   );
