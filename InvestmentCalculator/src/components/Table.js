@@ -1,10 +1,19 @@
 import React from 'react'
+import classes from './Table.module.css'
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+
+});
 
 function Table(props) {
   
   return (
     
-    <table className="result">
+    <table className={classes.result}>
     <thead>
       <tr>
         <th>Year</th>
@@ -20,11 +29,11 @@ function Table(props) {
       
       <tr key ={data.year}>
         <td>{data.year}</td>
-        <td>{data.savingsEndOfYear}</td>
-        <td>{data.yearlyInterest}</td>
-        <td>{data.savingsEndOfYear - 
-             props.initialInvestment - data.yearlyContribution * data.year}</td>
-        <td>{props.initialInvestment + data.yearlyContribution * data.year}</td>
+        <td>{formatter.format(data.savingsEndOfYear)}</td>
+        <td>{formatter.format(data.yearlyInterest)}</td>
+        <td>{formatter.format(data.savingsEndOfYear - 
+             props.initialInvestment - data.yearlyContribution * data.year)}</td>
+        <td>{formatter.format(props.initialInvestment + data.yearlyContribution * data.year)}</td>
       </tr>
       ))}
     </tbody>
